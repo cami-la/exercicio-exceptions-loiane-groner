@@ -15,28 +15,33 @@ public class Agenda {
 		boolean cheia = true;
 		
 		for (int i =0; i < contatos.length; i++) {
-			if (contatos[i] != null) {
+			if (contatos[i] == null) {
 				contatos[i] = c;
 				cheia = false;
+				break;
 			}
-		if (cheia) throw new AgendaCheiaException();
 		}
-		
+		if (cheia) throw new AgendaCheiaException();		
 	}
 	
 	public int consultaContadoPorNome(String Nome) throws ContatoNaoExisteException {
 		
 		for (int i = 0; i < contatos.length; i++) {
-			if (contatos[i].getNome().equalsIgnoreCase(Nome)) return i;
+			if (contatos[i] != null) {
+				if (contatos[i].getNome().equalsIgnoreCase(Nome))return i;
+				break;
+			}
+			
 		}
 		throw new ContatoNaoExisteException(Nome);
-	}
+		}
+		
 	
 	@Override
 	public String toString() {
 		String s = "";
 		for (Contato contato : contatos) {
-			s += contato.toString() + "\n";
+			if (contato != null) s += contato.toString() + "\n";
 		}
 		return s;
 	}

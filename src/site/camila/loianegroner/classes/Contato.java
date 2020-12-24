@@ -4,10 +4,11 @@ public class Contato {
 	//atributos
 	private static int cont = 0;
 	
+	private int id;
 	private String nome;
 	private String telefone;
 	private String email;
-	private int id;
+	
 	
 	public Contato() {
 		cont++;
@@ -48,7 +49,8 @@ public class Contato {
 		s += "ID: " + this.getId();
 		s += ", Nome: " + this.getNome();
 		s += ", Telefone: " + this.getTelefone();
-		s += ", Email: " + this.getEmail() + "]";
+		s += ", Email: " + this.getEmail();
+		s += "]";
 		return s;
 	}
 	
